@@ -1,9 +1,11 @@
 local clearLapTry = 1
 local prevLapCount = ac.getCar(0).lapCount
+local isRetryOnCollision = false
 
 function script.windowMain(dt)
  ui.text('clear lap try: ' .. clearLapTry)
  ui.text('clear laps completed: ' .. ac.getCar(0).lapCount)
+ retryOnCollisionCheckbox = ui.checkbox('Retry on collision', isRetryOnCollision)
  -- print(ac.getCar().collidedWith)
  -- print(physics.teleportCarTo(ac.SpawnSet.Pits))
 end
@@ -17,10 +19,16 @@ function script.update(dt)
     end
     -- collisionDetection
     if ac.getCar().collidedWith ~= -1 then
-       -- @TODO: add optional `restart on cars collision`
        ac.log('collision happened')
-       -- physics.teleportCarTo(ac.SpawnSet.Pits)
+           if isRetryOnCollision then
+              physics.teleportCarTo(ac.SpawnSet.Pits)
+           end
     end
+    if retryOnCollisionCheckbox then
+       isRetryOnCollision = not isRetryOnCollision
+       ac.log('retry on colliison is enabled')
+    end
+
 end
 
 ac.onConsoleInput(function(msg)
