@@ -24,7 +24,7 @@ function script.update(dt)
 end
 
 ac.onConsoleInput(function(msg)
-  if msg == 'rhelp' then
+  if msg == 'rchelp' then
     ac.console('**help message from RetryCounter**')
   end
   if msg == 'tp' then
