@@ -21,7 +21,7 @@ function script.update(dt)
     if ac.getCar().collidedWith ~= -1 then
        ac.log('collision happened')
            if isRetryOnCollision then
-              physics.teleportCarTo(ac.SpawnSet.Pits)
+              physics.teleportCarTo(ac.SpawnSet.Pits) -- on collision car gets respawned in pits
            end
     end
     if retryOnCollisionCheckbox then
