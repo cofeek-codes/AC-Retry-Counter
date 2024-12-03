@@ -5,7 +5,7 @@
 ## Features
 - A widget that shows amount of `Back to Pits` action called in single session
 - Resets when clear lap happen
-- Shows amout of tries on last lap (not implemented yet) 
+- Shows amout of tries on last lap
 - Automatically move you back to pits if you got off track (if `Retry on collision` is enabled)
 
 ## Installation
