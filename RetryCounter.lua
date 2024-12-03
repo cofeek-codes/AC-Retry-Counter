@@ -6,8 +6,6 @@ function script.windowMain(dt)
  ui.text('clear lap try: ' .. clearLapTry)
  ui.text('clear laps completed: ' .. ac.getCar(0).lapCount)
  retryOnCollisionCheckbox = ui.checkbox('Retry on collision', isRetryOnCollision)
- -- print(ac.getCar().collidedWith)
- -- print(physics.teleportCarTo(ac.SpawnSet.Pits))
 end
 
 function script.update(dt)
@@ -19,14 +17,12 @@ function script.update(dt)
     end
     -- collisionDetection
     if ac.getCar().collidedWith ~= -1 then
-       ac.log('collision happened')
            if isRetryOnCollision then
               physics.teleportCarTo(ac.SpawnSet.Pits) -- on collision car gets respawned in pits
            end
     end
     if retryOnCollisionCheckbox then
        isRetryOnCollision = not isRetryOnCollision
-       ac.log('retry on colliison is enabled')
     end
 
 end
